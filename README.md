@@ -12,7 +12,7 @@ El objetivo del proyecto es construir una API REST completa usando **Spring Boot
 - Spring Boot
 - Spring Data JPA
 - Spring Security + JWT
-- PostgreSQL
+- MySQL
 - Maven
 - Flyway
 - Stripe API (para pagos)
@@ -39,6 +39,3 @@ Este repositorio es una versión personalizada del starter project que se provee
 
 ---
 
-## Cómo ejecutar el proyecto (en construcción)
-
-Próximamente voy a agregar instrucciones para correr el proyecto localmente (incluyendo configuración de base de datos, variables de entorno y endpoints principales).
