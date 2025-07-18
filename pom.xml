@@ -62,9 +62,9 @@
             <groupId>org.flywaydb</groupId>
         </dependency>
         <dependency>
-            <artifactId>lombok</artifactId>
             <groupId>org.projectlombok</groupId>
-            <scope>annotationProcessor</scope>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope> <!-- cambiar de annotationProcessor a provided -->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

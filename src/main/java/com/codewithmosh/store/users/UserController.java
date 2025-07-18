@@ -1,5 +1,6 @@
 package com.codewithmosh.store.users;
 
+import com.codewithmosh.store.common.ErrorDto;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -60,6 +61,10 @@ public class UserController {
         userService.changePassword(id, changePasswordRequest);
     }
 
+    @ExceptionHandler(DuplicateUserException.class)
+    public ResponseEntity<ErrorDto> handleDuplicateUser() {
+        return ResponseEntity.badRequest().body(new ErrorDto("Email is already registered"));
+    }
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Void> handleUserNotFound() {
         return ResponseEntity.notFound().build();
