@@ -3,6 +3,7 @@ package com.codewithmosh.store.payments;
 import com.codewithmosh.store.common.ErrorDto;
 import com.codewithmosh.store.carts.CartEmptyException;
 import com.codewithmosh.store.carts.CartNotFoundException;
+import com.stripe.exception.StripeException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,10 +35,11 @@ public class CheckoutController {
             @RequestHeader Map<String,String> headers,
             @RequestBody String payload
     ){
+        System.out.println("Webhook recibido por el controlador");
         checkoutService.handleWebhookEvent(new WebhookRequest(headers,payload));
     }
 
-    @ExceptionHandler({CartEmptyException.class, CartNotFoundException.class})
+    @ExceptionHandler(StripeException.class)
     public ResponseEntity<ErrorDto> handlePaymentExceptions() {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
                 new ErrorDto("Error creating checkout session"));
