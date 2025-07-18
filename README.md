@@ -1,19 +1,41 @@
-# The Ultimate Spring Boot Course
+# Spring Boot Store – Proyecto del Curso "Mastering REST API Development"
 
-This repository contains the starter project for Part 2 of my Spring Boot course:
+Este repositorio contiene el proyecto que desarrollé como parte del curso **Mastering REST API Development** dictado por [Mosh Hamedani](https://codewithmosh.com/).
 
-[https://codewithmosh.com/p/spring-boot-building-apis](https://codewithmosh.com/p/spring-boot-building-apis)
+El objetivo del proyecto es construir una API REST completa usando **Spring Boot**, aplicando buenas prácticas como arquitectura en capas, manejo de excepciones, validaciones, JWT para autenticación, y conexión con una base de datos PostgreSQL.
 
-## About this Repository 
+---
 
-This project is based on the final project from Part 1 of the course, but I’ve cleaned it up and removed unnecessary playground code so we can focus on building APIs in Part 2.
+## Tecnologías utilizadas
 
-You’ll be cloning this repository and coding along with me as we extend the project.
+- Java 17
+- Spring Boot
+- Spring Data JPA
+- Spring Security + JWT
+- MySQL
+- Maven
+- Flyway
+- Stripe API (para pagos)
+- Swagger/OpenAPI
 
-To get started, clone the repository to your local machine:
+---
 
-```sh
-git clone https://github.com/mosh-hamedani/spring-api-starter
+## Estructura del proyecto
 
-cd spring-api
-```
+El proyecto incluye módulos para:
+
+- Gestión de usuarios y autenticación
+- Manejo de productos y categorías
+- Carrito de compras
+- Procesamiento de órdenes
+- Integración con Stripe
+- Configuraciones por entorno (dev/prod)
+
+---
+
+## Notas
+
+Este repositorio es una versión personalizada del starter project que se provee en el curso. He reorganizado y ampliado varias partes para adaptarlas a mis necesidades y aprendizaje.
+
+---
+
