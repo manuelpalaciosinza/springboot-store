@@ -1,12 +1,12 @@
-# Spring Boot Store – Proyecto del Curso "Mastering REST API Development"
+# Spring Boot Store – Project from "Mastering REST API Development" Course
 
-Este repositorio contiene el proyecto que desarrollé como parte del curso **Mastering REST API Development** dictado por [Mosh Hamedani](https://codewithmosh.com/).
+This repository contains the project I developed as part of the Mastering REST API Development course by Mosh Hamedani.
 
-El objetivo del proyecto es construir una API REST completa usando **Spring Boot**, aplicando buenas prácticas como arquitectura en capas, manejo de excepciones, validaciones, JWT para autenticación, y conexión con una base de datos PostgreSQL.
+The goal of this project is to build a complete REST API using Spring Boot, applying best practices such as layered architecture, exception handling, validations, JWT-based authentication, and connection to a MySQL database.
 
 ---
 
-## Tecnologías utilizadas
+## Technologies Used
 
 - Java 17
 - Spring Boot
@@ -14,28 +14,26 @@ El objetivo del proyecto es construir una API REST completa usando **Spring Boot
 - Spring Security + JWT
 - MySQL
 - Maven
-- Flyway
-- Stripe API (para pagos)
+- Flyway (for database migrations)
+- Stripe API (for payment)
 - Swagger/OpenAPI
 
 ---
 
-## Estructura del proyecto
-
-El proyecto incluye módulos para:
-
-- Gestión de usuarios y autenticación
-- Manejo de productos y categorías
-- Carrito de compras
-- Procesamiento de órdenes
-- Integración con Stripe
-- Configuraciones por entorno (dev/prod)
+## Project Structure
+The project includes modules for:
+-User management and authentication
+-Product and category management
+-Shopping cart handling
+-Order processing
+-Stripe integration for payments
+-Environment-based configurations (development/production)
 
 ---
 
-## Notas
+## Notes
 
-Este repositorio es una versión personalizada del starter project que se provee en el curso. He reorganizado y ampliado varias partes para adaptarlas a mis necesidades y aprendizaje.
+This repository is a customized version of the starter project provided in the course. I reorganized and extended several parts to fit my needs and deepen my learning.
 
 ---
 
