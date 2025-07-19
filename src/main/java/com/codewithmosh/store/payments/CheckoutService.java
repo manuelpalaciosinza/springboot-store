@@ -57,8 +57,12 @@ public class CheckoutService {
     public void handleWebhookEvent(WebhookRequest request){
         paymentGateway.parseWebhookRequest(request)
                 .ifPresent(paymentResult ->{
+                    System.out.println("Id de la orden: "+paymentResult.getOrderId());
                     var order = orderRepository.findById(paymentResult.getOrderId()).orElseThrow();
+                    System.out.println("Estado de la orden: " + order.getStatus());
+                    System.out.println("Estado del payment: "+ paymentResult.getPaymentStatus());
                     order.setStatus(paymentResult.getPaymentStatus());
+                    System.out.println("Estado nuevo de la orden: " + order.getStatus());
                     orderRepository.save(order);
                 } );
     }
