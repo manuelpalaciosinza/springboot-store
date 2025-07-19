@@ -35,7 +35,6 @@ public class CheckoutController {
             @RequestHeader Map<String,String> headers,
             @RequestBody String payload
     ){
-        System.out.println("Webhook recibido por el controlador");
         checkoutService.handleWebhookEvent(new WebhookRequest(headers,payload));
     }
 
