@@ -60,7 +60,7 @@ public class StripePaymentGateway implements PaymentGateway {
             var event = Webhook.constructEvent(request.getPayload(), signature, webhookSecretKey);
 
             switch (event.getType()) {
-                case "payment_intent.succeeded" -> {
+                case "checkout.session.completed" -> {
                     return Optional.of(new PaymentResult(extractOrderId(event), PaymentStatus.PAID));
                 }
                 case "payment_intent.payment_failed" -> {
@@ -77,11 +77,26 @@ public class StripePaymentGateway implements PaymentGateway {
 
     private Long extractOrderId(Event event) {
         var stripeObject = event.getDataObjectDeserializer().getObject().orElseThrow(
-                () -> new PaymentException("Could not deserialize Stripe Event.Check the SDK and API version.")
+                () -> new PaymentException("Could not deserialize Stripe Event.")
         );
-        //StripeObject is the base class of all stripe models. Depending on the event type, we have to cast the event to a more specific one
-        var paymentIntent = (PaymentIntent) stripeObject;
-        return Long.valueOf(paymentIntent.getMetadata().get("order_id"));
+
+        if ("checkout.session.completed".equals(event.getType())) {
+            var session = (com.stripe.model.checkout.Session) stripeObject;
+            String paymentIntentId = session.getPaymentIntent();
+
+            try {
+                var paymentIntent = PaymentIntent.retrieve(paymentIntentId);
+                return Long.valueOf(paymentIntent.getMetadata().get("order_id"));
+            } catch (StripeException e) {
+                throw new PaymentException("Failed to retrieve PaymentIntent");
+            }
+
+        } else if ("payment_intent.payment_failed".equals(event.getType())) {
+            var paymentIntent = (PaymentIntent) stripeObject;
+            return Long.valueOf(paymentIntent.getMetadata().get("order_id"));
+        }
+
+        throw new PaymentException("Unhandled event type");
     }
 
     private SessionCreateParams.LineItem createLineItem(OrderItem item) {
